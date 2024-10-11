@@ -96,6 +96,8 @@ class Anonymizer:
                 supported_language="ja"
             )
         )
+        # Registryが日本語をサポートするように設定
+        registry.supported_languages = ["ja"]
         return AnalyzerEngine(nlp_engine=nlp_engine, supported_languages=["ja"], registry=registry)
 
     def process_row(self, row: List[str]) -> List[str]:
@@ -130,7 +132,7 @@ class SpacyJapaneseNameRecognizer(EntityRecognizer):
     spaCyを使用して日本語の人名を検出するEntityRecognizerのカスタム実装。
     """
     def __init__(self, nlp: spacy.Language, supported_language: str = "ja"):
-        super().__init__(supported_entities=["PERSON"])
+        super().__init__(supported_entities=["PERSON"], supported_language=supported_language)
         self.nlp = nlp
         self.supported_language = supported_language
 

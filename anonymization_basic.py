@@ -8,6 +8,11 @@ from presidio_analyzer.nlp_engine import NlpEngineProvider
 from presidio_analyzer import RecognizerResult
 from presidio_anonymizer import AnonymizerEngine, operators
 from presidio_anonymizer.entities import OperatorConfig
+import warnings
+warnings.filterwarnings("ignore", message=".*resume_download.*", category=FutureWarning)
+warnings.filterwarnings("ignore", message=".*You are using `torch.load` with `weights_only=False`.*", category=FutureWarning)
+
+
 
 
 def initialize_anonymizer(engine_name: str, lang_code: str, model_name: str) -> 'Anonymizer':
